@@ -1,25 +1,48 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import NavContainer from './components/NavContainer'
+import ComingSoon from './components/ComingSoon'
+import Resume from './components/Resume'
+import Contact from './components/Contact'
+import Login from './components/Login'
+
+class App extends React.Component {
+  state = {
+    loggedIn: false
+  }
+
+  render(){
+    return (
+      <div className="App">
+          <Router>
+            <Route component={ routeInfo => <NavContainer routeInfo={ routeInfo } />} />
+            <Switch>
+              <Route exact path='/' component={ routeInfo => {
+                // return !this.state.loggedIn ? <ComingSoon routeInfo={ routeInfo } /> : <Redirect to="/resume" />
+                return <ComingSoon />
+              }} />
+
+              <Route path='/resume' component={ routeInfo => {
+                // return !!this.state.loggedIn ? <Resume routeInfo={ routeInfo } /> : <Redirect to="/" />
+                return <Resume />
+              }} />
+              
+              <Route path='/contact' component={ routeInfo => {
+                // return !!this.state.loggedIn ? <Contact routeInfo={ routeInfo } /> : <Redirect to="/" />
+                return <Contact />
+              }} />
+              
+              <Route path='/login' component={ routeInfo => {
+                // return !!this.state.loggedIn ? <Login routeInfo={ routeInfo } /> : <Redirect to="/" />
+                return <Login />
+              }} />
+            </Switch>
+          </Router>
+      </div>
+    );
+  }
 }
 
 export default App;

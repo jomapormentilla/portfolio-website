@@ -1,38 +1,61 @@
+:root {
+  --bg-color: rgb(14, 21, 66);
+  --active: rgb(67, 67, 126);
+}
+
+body, html {
+  margin-top: 0;
+  left: 0;
+  font-size: 13px;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.nav-container {
+  display: flex;
+  position: fixed;
+  padding: 5px 25px;
+  width: 100%;
+  justify-content: space-between;
   align-items: center;
+  background-color: var(--bg-color);
+  color: #fff;
+}
+
+  .nav-container-logo {
+    font-family: 'courier';
+    font-size: 25px;
+  }
+
+  .nav-container-links > a,
+  .nav-container-logo > a {
+    text-decoration: none;
+    padding: 5px 10px;
+    color: #fff;
+    margin-left: 10px;
+    transition-duration: 0.5s;
+  }
+
+  .nav-container-links > a:hover {
+    border: solid 1px #fff;
+  }
+
+  .nav-link-active {
+    background-color: var(--active);
+  }
+
+.coming-soon,
+.resume,
+.contact,
+.login {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  transition-duration: 0.1s;
 }
