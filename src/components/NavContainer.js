@@ -9,6 +9,10 @@ class NavContainer extends React.Component {
                 name: 'Home'
             },
             {
+                path: '/apps',
+                name: 'My Apps'
+            },
+            {
                 path: '/resume',
                 name: 'Resume'
             },
