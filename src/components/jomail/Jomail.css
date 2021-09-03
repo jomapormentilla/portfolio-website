@@ -60,6 +60,10 @@
     cursor: pointer;
 }
 
+    .messages-tabs-active {
+        background-color: #999;
+    }
+
     .messages-tabs-jomail > div {
         width: 100%;
         padding: 15px;
