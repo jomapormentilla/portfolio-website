@@ -14,12 +14,22 @@ class Menu extends React.Component {
     }
 
     renderItems = () => {
+        let unread = this.countUnread()
+        let starred = this.countStarred()
+
         return this.state.items.map((item, id) => {
             let active = ''
             if ( !!item.active ) {
                 active = ' menu-jomail-active'
             }
-            return <div key={ id } data-id={ item.name } className={ active } onClick={ this.setActive } title={ item.name }><i className={ item.icon }></i> &nbsp; { item.name }</div>
+
+            return (
+                <div key={ id } data-id={ item.name } className={ active } onClick={ this.setActive } title={ item.name } style={{ 'display': 'flex', 'justifyContent': 'space-between' }}>
+                    <div><i className={ item.icon }></i> &nbsp; { item.name }</div>
+                    { unread > 0 && item.name === "Inbox" ? <strong>{ unread }</strong> : null }
+                    { starred > 0 && item.name === "Starred" ? <strong>{ starred }</strong> : null }
+                </div>
+            )
         })
     }
 
@@ -37,11 +47,22 @@ class Menu extends React.Component {
         })
     }
 
+    countStarred = () => {
+        let emails = this.props.emails.filter(email => !email.read && !!email.favorite)
+        return emails.length
+    }
+
+    countUnread = () => {
+        let emails = this.props.emails.filter(email => !email.read)
+        return emails.length
+    }
+
     render(){
         return(
             <div className="menu-jomail">
                 <button className="btn btn-light" style={{ 'margin': '10px', 'padding': '10px', 'marginBottom': '20px', 'fontSize': '15px' }}>Compose</button>
                 { this.renderItems() }
+                <hr />
             </div>
         )
     }

@@ -5,6 +5,8 @@
     width: 100%;
     height: 100%;
     background-color: #fff;
+    box-shadow: 0px 0px 10px 2px #555;
+    overflow: scroll;
 }
 
 .header-jomail {
@@ -24,7 +26,7 @@
     height: 100%;
     min-width: 200px;
     color: #fff;
-    background-color: #777;
+    background-color: #333;
     border-right: solid 1px #333;
 }
 
@@ -47,9 +49,13 @@
 
 .messages-container-jomail {
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     width: 100%;
     color: #fff;
     background-color: #555;
+    overflow-y: inherit;
 }
 
 .messages-tabs-jomail {
@@ -61,7 +67,7 @@
 }
 
     .messages-tabs-active {
-        background-color: #999;
+        background-color: #777;
     }
 
     .messages-tabs-jomail > div {
@@ -72,3 +78,37 @@
         text-align: left;
         font-size: 15px;
     }
+
+.messages-rows-jomail {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-weight: 700;
+}
+
+    .messages-rows-jomail-read {
+        font-weight: 400;
+    }
+
+    .messages-rows-jomail > div {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+        border-bottom: solid 1px #777;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .messages-rows-jomail > div:hover {
+        box-shadow: 0px 0px 10px 1px #777;
+    }
+
+        .messages-rows-jomail > div > div {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .messages-rows-jomail > div > div > div {
+            margin-right: 10px;
+        }
