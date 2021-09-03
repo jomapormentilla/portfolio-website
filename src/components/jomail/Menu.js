@@ -60,7 +60,7 @@ class Menu extends React.Component {
     render(){
         return(
             <div className="menu-jomail">
-                <button className="btn btn-light" style={{ 'margin': '10px', 'padding': '10px', 'marginBottom': '20px', 'fontSize': '15px' }}>Compose</button>
+                <button className="btn btn-light" style={{ 'margin': '10px', 'padding': '10px', 'marginBottom': '20px', 'fontSize': '15px' }} onClick={ this.props.showNewMessage }>Compose</button>
                 { this.renderItems() }
                 <hr />
             </div>

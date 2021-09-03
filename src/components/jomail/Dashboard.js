@@ -5,10 +5,12 @@ import { emails } from '../../data/Emails'
 import Header from './Header'
 import Menu from './Menu'
 import MessagesContainer from './MessagesContainer'
+import NewMessage from './NewMessage'
 
 class Dashboard extends React.Component {
     state = {
-        emails: emails
+        emails: emails,
+        showCompose: false
     }
 
     toggleFavorite = id => {
@@ -29,13 +31,28 @@ class Dashboard extends React.Component {
         this.setState({ emails: newState.emails })
     }
 
+    showNewMessage = () => {
+        this.setState(prevState => ({
+            ...prevState,
+            showCompose: true
+        }))
+    }
+    
+    hideNewMessage = () => {
+        this.setState(prevState => ({
+            ...prevState,
+            showCompose: false
+        }))
+    }
+
     render(){
         return(
             <div className="dashboard-jomail">
                 <Header />
                 <div style={{ 'display': 'flex', 'flexDirection': 'row', 'height': '100%', 'maxHeight': '87vh', 'width': '100%', 'overflowY': 'scroll' }}>
-                    <Menu emails={ this.state.emails } />
+                    <Menu emails={ this.state.emails } showNewMessage={ this.showNewMessage } />
                     <MessagesContainer emails={ this.state.emails } toggleFavorite={ this.toggleFavorite } toggleUnread={ this.toggleUnread } />
+                    { !!this.state.showCompose ? <NewMessage hideNewMessage={ this.hideNewMessage } /> : null }
                 </div>
             </div>
         )
