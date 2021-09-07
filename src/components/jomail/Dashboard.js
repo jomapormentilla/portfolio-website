@@ -10,7 +10,9 @@ import NewMessage from './NewMessage'
 class Dashboard extends React.Component {
     state = {
         emails: emails,
-        showCompose: false
+        showCompose: false,
+        email: null,
+        showEmail: false
     }
 
     toggleFavorite = id => {
@@ -45,13 +47,28 @@ class Dashboard extends React.Component {
         }))
     }
 
+    renderEmail = id => {
+        let email = this.state.emails.find(email => email.id === id)
+        this.setState({
+            showEmail: true,
+            email
+        })
+    }
+
+    hideEmail = () => {
+        this.setState({
+            showEmail: false
+        })
+    }
+
     render(){
         return(
             <div className="dashboard-jomail">
                 <Header />
                 <div style={{ 'display': 'flex', 'flexDirection': 'row', 'height': '100%', 'maxHeight': '87vh', 'width': '100%', 'overflowY': 'scroll' }}>
-                    <Menu emails={ this.state.emails } showNewMessage={ this.showNewMessage } />
-                    <MessagesContainer emails={ this.state.emails } toggleFavorite={ this.toggleFavorite } toggleUnread={ this.toggleUnread } />
+                    <Menu emails={ this.state.emails } showNewMessage={ this.showNewMessage } hideEmail={ this.hideEmail } />
+                    <MessagesContainer emails={ this.state.emails } toggleFavorite={ this.toggleFavorite } toggleUnread={ this.toggleUnread } renderEmail={ this.renderEmail } showEmail={ this.state.showEmail } email={ this.state.email } />
+                    
                     { !!this.state.showCompose ? <NewMessage hideNewMessage={ this.hideNewMessage } /> : null }
                 </div>
             </div>

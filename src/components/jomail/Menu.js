@@ -44,7 +44,7 @@ class Menu extends React.Component {
             }
 
             return prevState
-        })
+        }, () => this.props.hideEmail())
     }
 
     countStarred = () => {

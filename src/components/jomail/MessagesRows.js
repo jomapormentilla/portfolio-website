@@ -1,13 +1,18 @@
 import React from 'react'
 
 class MessagesRows extends React.Component {
+    handleOnClick = (e, id) => {
+        this.props.renderEmail(id)
+        this.props.toggleUnread(id)
+    }
+
     renderEmails = () => {
         return this.props.emails.map(email => {
             let star = !!email.favorite ? 'bi-star-fill' : 'bi-star'
             let read = !!email.read ? 'messages-rows-jomail-read' : '' 
 
             return (
-                <div key={ email.id } onClick={ e => this.props.toggleUnread(email.id) } className={ read } >
+                <div key={ email.id } onClick={ e => this.handleOnClick(e, email.id) } className={ read } >
                     <div style={{ 'width': '200px', 'overflowX': 'hidden' }}>
                         <div><input type="checkbox" /></div>
                         <div onClick={ e => this.props.toggleFavorite(email.id) } data-id={ email.id }><i className={ star }></i></div>

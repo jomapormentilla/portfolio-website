@@ -4,8 +4,9 @@ export const emails = [
         sender: 'John Smithsonian',
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
-        favorite: false,
-        read: false
+        favorite: true,
+        read: false,
+        categories: ['Inbox', 'Starred', 'Important', 'Sent', 'Drafts'],
     },
     {
         id: 2,
@@ -13,7 +14,8 @@ export const emails = [
         subject: 'This is a test. This is a test subject! This is a test. ',
         body: 'Body body',
         favorite: false,
-        read: false
+        read: false,
+        categories: ['Inbox', 'Important', 'Sent', 'Drafts'],
     },
     {
         id: 3,
@@ -21,7 +23,8 @@ export const emails = [
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
         favorite: false,
-        read: false
+        read: false,
+        categories: ['Inbox', 'Important', 'Sent', 'Drafts'],
     },
     {
         id: 4,
@@ -29,39 +32,44 @@ export const emails = [
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
         favorite: false,
-        read: false
+        read: false,
+        categories: ['Inbox', 'Important', 'Sent', 'Drafts'],
     },
     {
         id: 5,
         sender: 'John Smith',
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
-        favorite: false,
-        read: false
+        favorite: true,
+        read: false,
+        categories: ['Inbox', 'Starred', 'Important'],
     },
     {
         id: 6,
         sender: 'John Smith',
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
-        favorite: false,
-        read: false
+        favorite: true,
+        read: false,
+        categories: ['Inbox', 'Starred', 'Important'],
     },
     {
         id: 7,
         sender: 'John Smith',
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
-        favorite: false,
-        read: false
+        favorite: true,
+        read: false,
+        categories: ['Inbox', 'Starred', 'Important'],
     },
     {
         id: 8,
         sender: 'John Smith',
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
-        favorite: false,
-        read: false
+        favorite: true,
+        read: false,
+        categories: ['Inbox', 'Starred', 'Important'],
     },
     {
         id: 9,
@@ -69,7 +77,8 @@ export const emails = [
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
         favorite: false,
-        read: false
+        read: false,
+        categories: ['Spam'],
     },
     {
         id: 10,
@@ -77,7 +86,8 @@ export const emails = [
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
         favorite: false,
-        read: false
+        read: false,
+        categories: ['Spam'],
     },
     {
         id: 11,
@@ -85,7 +95,8 @@ export const emails = [
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
         favorite: false,
-        read: false
+        read: false,
+        categories: ['Spam'],
     },
     {
         id: 12,
@@ -93,7 +104,8 @@ export const emails = [
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
         favorite: false,
-        read: false
+        read: false,
+        categories: ['Spam'],
     },
     {
         id: 13,
@@ -101,7 +113,8 @@ export const emails = [
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
         favorite: false,
-        read: false
+        read: false,
+        categories: ['Spam'],
     },
     {
         id: 14,
@@ -109,7 +122,8 @@ export const emails = [
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
         favorite: false,
-        read: false
+        read: false,
+        categories: ['Spam'],
     },
     {
         id: 15,
@@ -117,7 +131,8 @@ export const emails = [
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
         favorite: false,
-        read: false
+        read: false,
+        categories: ['Trash'],
     },
     {
         id: 16,
@@ -125,7 +140,8 @@ export const emails = [
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
         favorite: false,
-        read: false
+        read: true,
+        categories: ['Trash'],
     },
     {
         id: 17,
@@ -133,7 +149,8 @@ export const emails = [
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
         favorite: false,
-        read: false
+        read: true,
+        categories: ['Trash'],
     },
     {
         id: 18,
@@ -141,7 +158,8 @@ export const emails = [
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
         favorite: false,
-        read: false
+        read: true,
+        categories: ['Trash'],
     },
     {
         id: 19,
@@ -149,7 +167,8 @@ export const emails = [
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
         favorite: false,
-        read: false
+        read: true,
+        categories: ['Trash'],
     },
     {
         id: 20,
@@ -157,6 +176,7 @@ export const emails = [
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
         favorite: false,
-        read: false
+        read: true,
+        categories: ['Trash'],
     },
 ]
