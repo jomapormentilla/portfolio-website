@@ -5,7 +5,7 @@ class Menu extends React.Component {
         items: [
             { name: 'Inbox', icon: 'bi-inbox-fill', active: true },
             { name: 'Starred', icon: 'bi-star-fill', active: false },
-            { name: 'Important', icon: 'bi-cone-striped', active: false },
+            { name: 'Important', icon: 'bi-bookmark-fill', active: false },
             { name: 'Sent', icon: 'bi-cursor-fill', active: false },
             { name: 'Drafts', icon: 'bi-file-earmark-fill', active: false },
             { name: 'Spam', icon: 'bi-exclamation-octagon-fill', active: false },
@@ -16,6 +16,7 @@ class Menu extends React.Component {
     renderItems = () => {
         let unread = this.countUnread()
         let starred = this.countStarred()
+        let important = this.countImportant()
 
         return this.state.items.map((item, id) => {
             let active = ''
@@ -28,12 +29,14 @@ class Menu extends React.Component {
                     <div><i className={ item.icon }></i> &nbsp; { item.name }</div>
                     { unread > 0 && item.name === "Inbox" ? <strong>{ unread }</strong> : null }
                     { starred > 0 && item.name === "Starred" ? <strong>{ starred }</strong> : null }
+                    { important > 0 && item.name === "Important" ? <strong>{ important }</strong> : null }
                 </div>
             )
         })
     }
 
     setActive = e => {
+        this.props.filterEmails(e.target.dataset.id)
         this.setState(prevState => {
             for (const el in prevState.items) {
                 if (prevState.items[el].name === e.target.dataset.id) {
@@ -48,7 +51,12 @@ class Menu extends React.Component {
     }
 
     countStarred = () => {
-        let emails = this.props.emails.filter(email => !email.read && !!email.favorite)
+        let emails = this.props.emails.filter(email => !email.read && !!email.starred)
+        return emails.length
+    }
+    
+    countImportant = () => {
+        let emails = this.props.emails.filter(email => !email.read && !!email.important)
         return emails.length
     }
 

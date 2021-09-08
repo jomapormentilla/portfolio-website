@@ -10,21 +10,34 @@ import NewMessage from './NewMessage'
 class Dashboard extends React.Component {
     state = {
         emails: emails,
+        filtered: emails,
         showCompose: false,
         email: null,
         showEmail: false
     }
 
-    toggleFavorite = id => {
+    filterEmails = type => {
+        type = type.toLowerCase()
+        let filtered = type !== 'inbox' ? this.state.emails.filter(email => email.categories.includes(type)) : emails
+        this.setState(prevState => ({ ...prevState, filtered }))
+    }
+
+    toggleType = (id, type) => {
         let newState = this.state
         let idx = newState.emails.findIndex(email => email.id === id)
 
-        newState.emails[idx].favorite = !newState.emails[idx].favorite
+        newState.emails[idx][type] = !newState.emails[idx][type]
 
-        this.setState({ emails: newState.emails })
+        if (newState.emails[idx][type]) {
+            newState.emails[idx].categories.push(type)
+        } else {
+            newState.emails[idx].categories.filter(category => category !== type)
+        }
+
+        this.setState(prevState => ({ ...prevState, emails: newState.emails }))
     }
 
-    toggleUnread = id => {
+    markRead = id => {
         let newState = this.state
         let idx = newState.emails.findIndex(email => email.id === id)
 
@@ -66,8 +79,8 @@ class Dashboard extends React.Component {
             <div className="dashboard-jomail">
                 <Header />
                 <div style={{ 'display': 'flex', 'flexDirection': 'row', 'height': '100%', 'maxHeight': '87vh', 'width': '100%', 'overflowY': 'scroll' }}>
-                    <Menu emails={ this.state.emails } showNewMessage={ this.showNewMessage } hideEmail={ this.hideEmail } />
-                    <MessagesContainer emails={ this.state.emails } toggleFavorite={ this.toggleFavorite } toggleUnread={ this.toggleUnread } renderEmail={ this.renderEmail } showEmail={ this.state.showEmail } email={ this.state.email } />
+                    <Menu emails={ this.state.emails } showNewMessage={ this.showNewMessage } hideEmail={ this.hideEmail } filterEmails={ this.filterEmails } />
+                    <MessagesContainer emails={ this.state.emails } filtered={ this.state.filtered } toggleType={ this.toggleType } markRead={ this.markRead } renderEmail={ this.renderEmail } showEmail={ this.state.showEmail } email={ this.state.email } />
                     
                     { !!this.state.showCompose ? <NewMessage hideNewMessage={ this.hideNewMessage } /> : null }
                 </div>
