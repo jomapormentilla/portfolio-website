@@ -10,7 +10,7 @@
     height: 100%;
     background-color: #fff;
     box-shadow: 0px 0px 10px 2px #555;
-    overflow: scroll;
+    overflow: hidden;
     min-width: 1024px;
 }
 
@@ -58,6 +58,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     width: 100%;
+    height: 100%;
     color: #fff;
     background-color: #555;
     overflow-y: inherit;
@@ -71,8 +72,13 @@
     cursor: pointer;
 }
 
+    .messages-tabs-jomail > div:hover {
+        background-color: #888;
+    }
+
     .messages-tabs-active {
         background-color: #777;
+        border-bottom: solid 10px blue;
     }
 
     .messages-tabs-jomail > div {
@@ -82,6 +88,25 @@
         border-bottom: solid 1px #333;
         text-align: left;
         font-size: 15px;
+    }
+
+.messages-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: #fff;
+    background-color: #333;
+    font-size: 15px;
+}
+
+    .messages-menu > div {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .messages-menu > div > div {
+        cursor: pointer;
     }
 
 .messages-rows-jomail {
@@ -116,7 +141,8 @@
             justify-content: flex-start;
         }
 
-        .messages-rows-jomail > div > div > div {
+        .messages-rows-jomail > div > div > div,
+        .messages-menu > div > div {
             margin-right: 10px;
         }
 
@@ -187,7 +213,7 @@
     padding: 15px;
     background-color: #fff;
     color: #000;
-    }
+}
 
 .starred {
     color: gold;

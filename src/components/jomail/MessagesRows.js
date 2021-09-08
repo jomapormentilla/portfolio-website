@@ -22,7 +22,7 @@ class MessagesRows extends React.Component {
                         <div onClick={ e => this.props.toggleType(email.id, 'important') } data-id={ email.id }><i className={ important }></i></div>
                         <div>{ email.sender }</div>
                     </div>
-                    <div><span>{ email.subject }</span> - <span style={{ 'fontWeight': '200' }}>{ email.body }</span></div>
+                    <div><span>{ email.subject }</span> &nbsp; - &nbsp; <span style={{ 'fontWeight': '200' }}>{ email.body }</span></div>
                 </div>
             )
         })

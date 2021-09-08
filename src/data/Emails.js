@@ -4,10 +4,10 @@ export const emails = [
         sender: 'John Smithsonian',
         subject: 'This is a test. This is a test subject!',
         body: 'Body body',
-        starred: false,
-        read: false,
+        starred: true,
+        read: true,
         categories: [],
-        important: false,
+        important: true,
     },
     {
         id: 2,

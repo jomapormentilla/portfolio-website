@@ -1,15 +1,18 @@
 import React from 'react'
 import './Jomail.css'
 import { emails } from '../../data/Emails'
+import { users } from '../../data/Users'
 
 import Header from './Header'
 import Menu from './Menu'
+import MessagesMenu from './MessagesMenu'
 import MessagesContainer from './MessagesContainer'
 import NewMessage from './NewMessage'
 
 class Dashboard extends React.Component {
     state = {
         emails: emails,
+        users: users,
         filtered: emails,
         showCompose: false,
         email: null,
@@ -78,11 +81,16 @@ class Dashboard extends React.Component {
         return(
             <div className="dashboard-jomail">
                 <Header />
-                <div style={{ 'display': 'flex', 'flexDirection': 'row', 'height': '100%', 'maxHeight': '87vh', 'width': '100%', 'overflowY': 'scroll' }}>
+                <div style={{ 'display': 'flex', 'flexDirection': 'row', 'maxHeight': '87vh', 'width': '100%', 'height': '100%' }}>
                     <Menu emails={ this.state.emails } showNewMessage={ this.showNewMessage } hideEmail={ this.hideEmail } filterEmails={ this.filterEmails } />
-                    <MessagesContainer emails={ this.state.emails } filtered={ this.state.filtered } toggleType={ this.toggleType } markRead={ this.markRead } renderEmail={ this.renderEmail } showEmail={ this.state.showEmail } email={ this.state.email } />
+                    <div style={{ 'display': 'flex', 'flexDirection': 'column', 'width': '100%', 'height': '100%' }}>
+                        <MessagesMenu emails={ this.state.emails } />
+                        <div style={{ 'display': 'flex', 'flexDirection': 'row', 'width': '100%', 'overflowY': 'scroll', 'height': '100%', 'paddingBottom': '10px', 'backgroundColor': '#333' }}>
+                            <MessagesContainer emails={ this.state.emails } filtered={ this.state.filtered } toggleType={ this.toggleType } markRead={ this.markRead } renderEmail={ this.renderEmail } showEmail={ this.state.showEmail } email={ this.state.email } />
+                        </div>
+                    </div>
                     
-                    { !!this.state.showCompose ? <NewMessage hideNewMessage={ this.hideNewMessage } /> : null }
+                    { !!this.state.showCompose ? <NewMessage hideNewMessage={ this.hideNewMessage } users={ this.state.users } /> : null }
                 </div>
             </div>
         )

@@ -10,14 +10,14 @@ class MyApps extends React.Component {
                 name: 'JoMail',
                 path: '/jomail',
                 desc: 'JoMail description!',
-                component: 'Dashboard',
+                component: <Dashboard />,
                 display: true
             },
             {
                 name: 'Dog Age Match',
                 path: '/dogmatch',
                 desc: 'When will you and your dog be the same age?',
-                component: 'Dashboard',
+                component: <Dashboard />,
                 display: false
             },
         ]
@@ -29,13 +29,24 @@ class MyApps extends React.Component {
                 return(
                     <div className="my-app-card" key={ id }>
                         <div className="my-app-header">
-                            <Link to={ this.props.routeInfo.match.path + app.path } className="my-app-link">{ app.name }</Link>
+                            <span>{ app.name }</span>
+                            <Link to={ this.props.routeInfo.match.path + app.path } className="btn btn-light btn-sm">Open</Link>
                         </div>
                         <div className="my-app-body">
                             { app.desc }
                         </div>
                     </div>
                 )
+            } else {
+                return null
+            }
+        })
+    }
+
+    renderRoutes = () => {
+        return this.state.apps.map((app, id) => {
+            if(!!app.display) {
+                return <Route path={ this.props.routeInfo.match.path + app.path } component={ routeInfo => app.component } key={ id } />
             } else {
                 return null
             }
@@ -54,7 +65,9 @@ class MyApps extends React.Component {
                         </div>
                     </Route>
 
-                    <Route path={ `${this.props.routeInfo.match.path}/jomail` } component={ routeInfo => <Dashboard /> } />
+                    {/* <Route path={ `${this.props.routeInfo.match.path}/jomail` } component={ routeInfo => <Dashboard /> } /> */}
+
+                    { this.renderRoutes() }
             </div>
         )
     }

@@ -77,20 +77,23 @@ a {
     }
 
     .my-app-card {
-      border: solid 1px #777;
+      border: solid 1px #999;
+      box-shadow: 0px 0px 10px 2px #aaa;
       width: 300px;
-      background-color: #fff;;
+      background-color: #fff;
       margin-right: 15px;
+      border-radius: 15px;
+      overflow: hidden;
     }
 
       .my-app-header {
-        background-color: #aaa;
-        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+        background-color: rgb(71, 45, 71);
+        padding: 10px 15px;
       }
-
-        .my-app-header > a {
-          color: #fff;
-        }
 
       .my-app-body {
         display: flex;
