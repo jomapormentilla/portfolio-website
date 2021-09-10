@@ -12,10 +12,10 @@ import NewMessage from './NewMessage'
 class Dashboard extends React.Component {
     state = {
         emails: emails,
+        email: null,
         users: users,
         filtered: emails,
         showCompose: false,
-        email: null,
         showEmail: false
     }
 
@@ -81,12 +81,24 @@ class Dashboard extends React.Component {
         return(
             <div className="dashboard-jomail">
                 <Header />
-                <div style={{ 'display': 'flex', 'flexDirection': 'row', 'maxHeight': '87vh', 'width': '100%', 'height': '100%' }}>
-                    <Menu emails={ this.state.emails } showNewMessage={ this.showNewMessage } hideEmail={ this.hideEmail } filterEmails={ this.filterEmails } />
-                    <div style={{ 'display': 'flex', 'flexDirection': 'column', 'width': '100%', 'height': '100%' }}>
+                <div style={ wrapper1 }>
+                    <Menu   emails={ this.state.emails } 
+                            showNewMessage={ this.showNewMessage } 
+                            hideEmail={ this.hideEmail } 
+                            filterEmails={ this.filterEmails } 
+                    />
+                    <div style={ wrapper2 }>
                         <MessagesMenu emails={ this.state.emails } />
-                        <div style={{ 'display': 'flex', 'flexDirection': 'row', 'width': '100%', 'overflowY': 'scroll', 'height': '100%', 'paddingBottom': '10px', 'backgroundColor': '#333' }}>
-                            <MessagesContainer emails={ this.state.emails } filtered={ this.state.filtered } toggleType={ this.toggleType } markRead={ this.markRead } renderEmail={ this.renderEmail } showEmail={ this.state.showEmail } email={ this.state.email } />
+                        
+                        <div style={ wrapper3 }>
+                            <MessagesContainer  emails={ this.state.emails } 
+                                                filtered={ this.state.filtered } 
+                                                toggleType={ this.toggleType } 
+                                                markRead={ this.markRead } 
+                                                renderEmail={ this.renderEmail } 
+                                                showEmail={ this.state.showEmail } 
+                                                email={ this.state.email } 
+                            />
                         </div>
                     </div>
                     
@@ -96,5 +108,9 @@ class Dashboard extends React.Component {
         )
     }
 }
+
+const wrapper1 = { 'display': 'flex', 'flexDirection': 'row', 'maxHeight': '87vh', 'width': '100%', 'height': '100%' }
+const wrapper2 = { 'display': 'flex', 'flexDirection': 'column', 'width': '100%', 'height': '100%' }
+const wrapper3 = { 'display': 'flex', 'flexDirection': 'row', 'width': '100%', 'overflowY': 'scroll', 'height': '100%', 'paddingBottom': '10px', 'backgroundColor': '#333' }
 
 export default Dashboard

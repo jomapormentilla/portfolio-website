@@ -9,6 +9,7 @@ body, html {
   margin-top: 0;
   left: 0;
   font-size: 13px;
+  min-width: 1024px;
 }
 
 a {
@@ -37,15 +38,18 @@ a {
   }
 
   .nav-container-links > a,
+  .nav-container-links > span,
   .nav-container-logo > a {
     text-decoration: none;
     padding: 5px 10px;
     color: #fff;
     margin-left: 10px;
     transition-duration: 0.5s;
+    cursor: pointer;
   }
 
-  .nav-container-links > a:hover {
+  .nav-container-links > a:hover,
+  .nav-container-links > span:hover {
     border: solid 1px #fff;
   }
 
@@ -56,7 +60,6 @@ a {
 .coming-soon,
 .resume,
 .contact,
-.login,
 .my-apps {
   display: flex;
   justify-content: center;
@@ -74,6 +77,9 @@ a {
 
     .my-apps-container {
       display: flex;
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     .my-app-card {
@@ -82,6 +88,7 @@ a {
       width: 300px;
       background-color: #fff;
       margin-right: 15px;
+      margin-bottom: 15px;
       border-radius: 15px;
       overflow: hidden;
     }
@@ -99,6 +106,28 @@ a {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 5px;
-        height: 100px;
+        padding: 15px;
+        min-height: 100px;
       }
+
+.login {
+  display: flex;
+  position: absolute;
+  top: 47px;
+  right: 15px;
+  background-color: #eee;
+  padding: 15px;
+  border: solid 1px #999d;
+  border-top: none;
+}
+
+  .login > form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .login > form input {
+    border: solid 1px #ddd;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+  }

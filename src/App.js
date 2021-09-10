@@ -11,7 +11,12 @@ import Login from './components/Login'
 
 class App extends React.Component {
   state = {
-    loggedIn: false
+    loggedIn: false,
+    user: null
+  }
+
+  authenticate = () => {
+    console.log('Authenticate Function')
   }
 
   render(){

@@ -12,7 +12,7 @@ class MessagesTabs extends React.Component {
 
     renderTabs = () => {
         return this.state.tabs.map((tab, id) => {
-            let active = ''
+            let active = 'messages-tabs-inactive'
             if (!!tab.active) {
                 active = 'messages-tabs-active'
             }

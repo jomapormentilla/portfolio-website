@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import Login from './Login'
+
 class NavContainer extends React.Component {
     state = {
         routes: [
@@ -20,11 +22,16 @@ class NavContainer extends React.Component {
                 path: '/contact',
                 name: 'Contact'
             },
-            {
-                path: '/login',
-                name: 'Login'
-            },
-        ]
+        ],
+        showLogin: false
+    }
+
+    renderLogin = () => {
+        this.setState({ showLogin: !this.state.showLogin })
+    }
+
+    hideLogin = () => {
+        this.setState({ showLogin: false })
     }
 
     renderLinks = () => {
@@ -34,7 +41,7 @@ class NavContainer extends React.Component {
                 active = 'nav-link-active'
             }
 
-            return <Link to={ link.path } className={ active } key={ id }>{ link.name }</Link>
+            return <Link to={ link.path } className={ active } key={ id } onClick={ this.hideLogin }>{ link.name }</Link>
         })
     }
 
@@ -47,7 +54,10 @@ class NavContainer extends React.Component {
 
                 <div className="nav-container-links">
                     { this.renderLinks() }
+
+                    <span onClick={ this.renderLogin }>Login</span>
                 </div>
+                { !!this.state.showLogin ? <Login hideLogin={ this.hideLogin } /> : null }
             </div>
         )
     }

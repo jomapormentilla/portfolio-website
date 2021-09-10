@@ -9,7 +9,7 @@ class MyApps extends React.Component {
             {
                 name: 'JoMail',
                 path: '/jomail',
-                desc: 'JoMail description!',
+                desc: 'A Gmail interface clone. Users can use this to communicate with other users on the JoMatrix platform.',
                 component: <Dashboard />,
                 display: true
             },
@@ -58,8 +58,8 @@ class MyApps extends React.Component {
             <div className="my-apps" style={{ 'flexDirection': 'column', 'justifyContent': 'start', 'alignItems': 'start', 'backgroundColor': '#ddd' }}>
 
                     <Route exact path={ `${this.props.routeInfo.match.path}` }>
-                        <h2>MyApps</h2>
-                        <hr />
+                        <h2 style={{ 'textAlign': 'center', 'width': '100%', 'borderBottom': 'solid 1px #aaa', 'paddingBottom': '15px' }}>My Apps</h2>
+                        <br />
                         <div className="my-apps-container">
                             { this.renderApps() }
                         </div>
